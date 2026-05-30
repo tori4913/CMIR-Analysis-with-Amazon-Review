@@ -12,7 +12,8 @@ from tqdm import tqdm
 
 # Load API Key
 load_dotenv()
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+API_KEY = getpass.getpass("Enter Your Gemini API Key: ")
+client = genai.Client(api_key=API_KEY)
 MODEL_NAME = "gemini-2.5-flash"
 
 def get_images(row):
