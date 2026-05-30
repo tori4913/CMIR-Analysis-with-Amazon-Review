@@ -6,7 +6,7 @@ This repository provides an automated evaluation pipeline for assessing the Cros
 The framework facilitates a comparative study by analyzing how CMIR metrics influence the content moderation performance of Large Language Models (LLMs). By providing a structured environment for ablation studies, this tool helps evaluate the necessity of risk-aware screening in downstream AI applications.
 
 ## 📁 Repository Structure
-```
+
 cmir-multimodal-evaluator/
 ├── .gitignore
 ├── README.md
@@ -19,7 +19,7 @@ cmir-multimodal-evaluator/
 │   └── version_C.json        # Experimental group: Prompt with CMIR integration
 └── data/                     
     └── sample_input.xlsx
-'''
+
 
 ## 📊 Experimental Setup (Ablation Study)
 The pipeline evaluates reviews through two distinct modes to measure the impact of multimodal risk awareness:
