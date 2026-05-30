@@ -1,0 +1,18 @@
+# Python environment and cache
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+
+# Secret configuration
+.env
+
+# Data files and output results
+data/*.xlsx
+final_results.xlsx
+
+# OS and IDE settings
+.DS_Store
+.vscode/
+.idea/
