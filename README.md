@@ -12,7 +12,7 @@ cmir-multimodal-evaluator/
 ├── .env.example              
 ├── prompts/                  
 │   ├── cmir_guideline.txt
-│   ├── version_A.json        # (통제군) CMIR 미적용 프롬프트
-│   └── version_C.json        # (실험군) CMIR 적용 프롬프트
+│   ├── version_A.json        # Control group: Prompt without CMIR integration
+│   └── version_C.json        # Experimental group: Prompt with CMIR integration
 └── data/                     
     └── sample_input.xlsx
