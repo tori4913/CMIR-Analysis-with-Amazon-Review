@@ -3,12 +3,14 @@ import json
 import time
 import requests
 import pandas as pd
+import getpass
 from io import BytesIO
 from PIL import Image
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from tqdm import tqdm
+
 
 # Load API Key
 load_dotenv()
