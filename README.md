@@ -1,6 +1,6 @@
 # CMIR-Analysis-with-Amazon-Review
 
-🛡️ CMIR-Multimodal-Evaluator
+### 🛡️ CMIR-Multimodal-Evaluator
 This repository provides an automated evaluation pipeline for assessing the Cross-Modal Inconsistency Risk (CMIR) in e-commerce multimodal reviews.
 
 The framework facilitates a comparative study by analyzing how CMIR metrics influence the content moderation performance of Large Language Models (LLMs). By providing a structured environment for ablation studies, this tool helps evaluate the necessity of risk-aware screening in downstream AI applications.
