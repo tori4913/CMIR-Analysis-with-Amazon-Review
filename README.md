@@ -43,17 +43,8 @@ pip install -r requirements.txt
 
 ```
 
-### 2. Configuration 🔑
 
-Copy the environment template and set your Gemini API key:
-
-```bash
-cp .env.example .env
-# Edit the .env file and input your GEMINI_API_KEY
-
-```
-
-### 3. Data Preparation 📂
+### 2. Data Preparation 📂
 
 Place your dataset in the `data/` folder. The system requires an Excel file with the following standard columns:
 
@@ -63,7 +54,7 @@ Place your dataset in the `data/` folder. The system requires an Excel file with
 * `cmir`: Precomputed inconsistency risk score.
 * `image_url`: Comma-separated image links.
 
-### 4. Execution 🏃‍♂️
+### 3. Execution 🏃‍♂️
 
 Run the evaluation pipeline:
 
