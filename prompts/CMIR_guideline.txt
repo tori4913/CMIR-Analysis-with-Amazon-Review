@@ -1,0 +1,15 @@
+## [CMIR Guidelines]
+CMIR (Cross-Modal Inconsistency Risk) is a risk index that aggregates inconsistencies between multimodal signals (star ratings, text, images) and privacy exposure within online reviews. It is designed under the premise that if an LLM receives highly inconsistent input, the risk of hallucinations, attribute distortion, and privacy information reconstruction increases.
+
+* Current relative_CMIR_score: {cmir_val} / 100
+
+[Risk Components]
+1. Star Rating–Text Inconsistency
+2. Star Rating–Image Inconsistency
+3. Privacy Exposure in Images (Faces, Body, Living Space, Personally Identifiable Information)
+4. Complex risks arising from simultaneous high inconsistency and privacy exposure
+
+## Label Definitions
+- PASS : Signals are generally consistent, and privacy exposure is minimal.
+- Mask : Moderate inconsistency or privacy exposure exists; can be posted after masking sensitive areas.
+- Block: Severe inconsistency, clear PII exposure, or a combination of both.
