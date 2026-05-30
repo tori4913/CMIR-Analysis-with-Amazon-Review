@@ -17,7 +17,6 @@ cmir-multimodal-evaluator/
 ├── data/               # Input directory for review datasets
 ├── prompts/            # Prompt templates and CMIR risk guidelines
 ├── main.py             # Main execution pipeline
-├── .env.example        # API environment template
 └── requirements.txt    # Required dependencies
 
 ```
