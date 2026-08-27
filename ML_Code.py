@@ -33,23 +33,23 @@ control_vars = [
     'media_count',
     'overall_rating',
     'review_length',
-    'review_rating',
+    's_r',
     'verified_purchase',
 ]
 text_vars = [
-    'ceir_text_incon_text_rating_discrepancy_score',
-    'ceir_text_text_specific_detail_claims_count',
+    'Text_Rating_Incon',
+    'Text_Detail_Deficiency',
 ]
 image_vars = [
-    'ceir_image_incon_image_rating_discrepancy_score',
-    'ceir_image_incon_visual_quality_score',
+    'Image_Rating_Incon',
+    'Image_Visual_Quality',
 ]
 priv_vars = [
-    'privarcy_image_privacy_biometric_body_percent',
-    'privarcy_image_privacy_biometric_face_percent',
-    'privarcy_image_privacy_context_living_space_percent',
+    'Privacy_Body_Exposure',
+    'Privacy_Face_Exposure',
+    'Privacy_Context_Exposure',
 ]
-amp_vars = ['privacy-amplified visual inconsistency']
+amp_vars = ['I_PA']
 
 model_stages = {
     'Model 1\n(Text)': control_vars + text_vars,
@@ -59,7 +59,7 @@ model_stages = {
     ),
 }
 
-target = 'log_helpful_count'
+target = 'Y_r'
 
 # Drop missing values for required variables, asin, and amazon_vine
 required_cols = (
