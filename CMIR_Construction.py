@@ -19,14 +19,18 @@ def build_cmir_dot_product_pipeline(df: pd.DataFrame) -> pd.DataFrame:
     res['s_r'] = (res['review_rating'] - 1.0) / 4.0
 
   # 2. Paper-Adopted Sub-Indicators Normalization
+  # NOTE (fixed 2026-08): weights below now match manuscript Table A5-1 /
+  # Sec. 4.5.2 dimension weights (Text .20 / Image .25 / Privacy .35 /
+  # Interaction .20). The previous version of this file used Privacy=.45
+  # and Interaction=.10, which did not match the manuscript.
   sub_indicators = [
-      'Text_Rating_Incon',  # w1 = 0.10
-      'Text_Detail_Deficiency',  # w2 = 0.10
-      'Image_Rating_Incon',  # w3 = 0.15
-      'Image_Visual_Quality',  # w4 = 0.10
-      'Privacy_Body_Exposure',  # w5 = 0.05
-      'Privacy_Face_Exposure',  # w6 = 0.30
-      'Privacy_Context_Exposure',  # w7 = 0.10
+      'Text_Rating_Incon',  # w1 = 0.10  (within CEIR_Text, "Equal")
+      'Text_Detail_Deficiency',  # w2 = 0.10  (within CEIR_Text, "Equal")
+      'Image_Rating_Incon',  # w3 = 0.15  (within CEIR_Image, "Primary")
+      'Image_Visual_Quality',  # w4 = 0.10  (within CEIR_Image, "Auxiliary")
+      'Privacy_Body_Exposure',  # w5 = 0.04  (within Privacy, "Lowest")
+      'Privacy_Face_Exposure',  # w6 = 0.23  (within Privacy, "Highest")
+      'Privacy_Context_Exposure',  # w7 = 0.08  (within Privacy, "Intermediate")
   ]
 
   for col in sub_indicators:
@@ -42,9 +46,9 @@ def build_cmir_dot_product_pipeline(df: pd.DataFrame) -> pd.DataFrame:
       + res.get('Image_Visual_Quality_norm', 0) * (0.10 / 0.25)
   )
   res['I_Privacy'] = (
-      res.get('Privacy_Body_Exposure_norm', 0) * (0.05 / 0.45)
-      + res.get('Privacy_Face_Exposure_norm', 0) * (0.30 / 0.45)
-      + res.get('Privacy_Context_Exposure_norm', 0) * (0.10 / 0.45)
+      res.get('Privacy_Body_Exposure_norm', 0) * (0.04 / 0.35)
+      + res.get('Privacy_Face_Exposure_norm', 0) * (0.23 / 0.35)
+      + res.get('Privacy_Context_Exposure_norm', 0) * (0.08 / 0.35)
   )
   res['I_PA'] = res['CEIR_RI'] * res['I_Privacy']
 
@@ -69,9 +73,12 @@ def build_cmir_dot_product_pipeline(df: pd.DataFrame) -> pd.DataFrame:
   X = res[feature_cols].values
 
   # Weight Vector (W): Shape (8,)
+  # Dimension totals: Text=.20, Image=.25, Privacy=.35, Interaction=.20
+  # (manuscript Table A5-1 / Sec. 4.5.2).
   weights_vector = np.array(
-      [0.10, 0.10, 0.15, 0.10, 0.05, 0.30, 0.10, 0.10], dtype=np.float64
+      [0.10, 0.10, 0.15, 0.10, 0.04, 0.23, 0.08, 0.20], dtype=np.float64
   )
+  assert abs(weights_vector.sum() - 1.0) < 1e-8, 'CMIR weights must sum to 1.0'
 
   # Dot Product: CMIR = X · W
   res['CMIR'] = np.dot(X, weights_vector)
