@@ -1,0 +1,11 @@
+[CMIR Guideline for Content Moderation]
+This review has been pre-scored by the CMIR (Cross-Modal Inconsistency Risk) pipeline.
+relative_CMIR_score (0-100): {cmir_val}
+
+Interpretation bands (higher = greater multimodal inconsistency / privacy risk):
+- 0-25   (Low Risk Zone):    Text, image, and rating signals are broadly consistent; minimal privacy exposure.
+- 25-50  (Gold Zone):        Minor inconsistencies or low-level privacy exposure; generally still trustworthy.
+- 50-75  (Medium Risk Zone): Noticeable text-image-rating inconsistency and/or moderate privacy exposure; warrants closer scrutiny.
+- 75-100 (Masking Zone):     Severe inconsistency and/or high privacy exposure (e.g., identifiable faces, private contexts); default action is masking of the offending media/content.
+
+Use this score, together with the review text and any attached images, to decide whether the review should be Passed, Masked, or Blocked. Explicitly reference the relative_CMIR_score band in your reasoning.
