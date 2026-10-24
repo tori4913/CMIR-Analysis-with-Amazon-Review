@@ -1,5 +1,31 @@
 # Changelog — GitHub 체크리스트 반영 내역
 
+## 2026-10-24 — 리비전 분석 코드 및 공개 구조 보완
+
+**새로 만든 파일**
+- `analysis/run_table5_grouped_ml.py` — Vine/Non-Vine 표본을 분리하고 ASIN
+  단위 GroupKFold를 적용하여 Table 5 형식의 예측 성능(`R2`, `RMSE`,
+  `RMSE_SD`, `MAE`)을 재현하는 코드입니다.
+- `analysis/run_ri_exclusion_ols.py` — Reviewer 7-1의 Rating–Image
+  Inconsistency(RI) 제외 분석을 위해, RI를 Models 2–3에서 제외한
+  Vine/Non-Vine/전체 HC3 OLS 결과를 하나의 로컬 Excel 파일로 저장합니다.
+- `analysis/run_table8b_component_attribution.py` — Table 8b의 네 개
+  저장 구성요소(`d_RT`, `d_RI`, `I_privacy`, `d_Interaction`)에 대해
+  점수 분산 및 선택한 검증기준과의 공분산 기반 기여도를 점검합니다.
+
+**수정한 파일**
+- `README.md` — 데이터 미포함 원칙, `analysis/` 폴더 구조, 두 리비전 분석의
+  목적·입력요건·실행 명령, 생성 결과의 로컬 보관 원칙을 추가했습니다.
+- `.gitignore` — `data/`, `outputs/`, `results/`, CSV/XLS/XLSX를 모두
+  제외하도록 확장했습니다. 따라서 원자료와 결과물이 GitHub에 올라가지 않습니다.
+- `requirements.txt` — 재현 코드에 필요한 통계·ML 패키지를 명시했습니다.
+
+**확인 범위**
+- 새 Python 파일은 문법 컴파일을 통과했습니다.
+- 데이터 파일은 읽거나 추가하지 않았으며, 실제 분석 실행은 접근 통제된 로컬
+  데이터로 사용자가 수행해야 합니다.
+
+
 원본 저장소(`tori4913/CMIR-Analysis-with-Amazon-Review`)를 논문(Revision2)과
 대조해 발견한 문제를 체크리스트 4개 항목 기준으로 수정했습니다.
 

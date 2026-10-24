@@ -8,8 +8,13 @@ env/
 # Secret configuration
 .env
 
-# Data files and output results
-data/*.xlsx
+# Restricted research data and generated results (never commit)
+data/
+outputs/
+results/
+*.csv
+*.xlsx
+*.xls
 final_results.xlsx
 
 # OS and IDE settings
